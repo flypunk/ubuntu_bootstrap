@@ -1,0 +1,19 @@
+---
+- hosts: localhost
+  become: true
+  tasks:
+  - name: install basic system packages
+    package: name={{ item }} state=latest
+    with_items:
+    - git
+    - whois
+    - htop
+    - p7zip-full
+    - build-essential
+    - screen
+    - python-dev
+    - vim
+    - meld
+    - jq
+    - vlc
+    - ubuntu-restricted-extras
