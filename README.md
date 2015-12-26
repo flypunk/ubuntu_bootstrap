@@ -6,5 +6,6 @@
 sudo apt-get install -y python-setuptools
 git clone git@github.com:ansible/ansible.git
 cd ansible
+git submodule update --init --recursive
 sudo -H python setup.py install
 ```
