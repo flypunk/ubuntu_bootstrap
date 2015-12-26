@@ -6,6 +6,7 @@
     package: name={{ item }} state=latest
     with_items:
     - git
+    - ssh
     - whois
     - htop
     - p7zip-full
