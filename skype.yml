@@ -1,0 +1,12 @@
+---
+- hosts: localhost
+  become: true
+  vars:
+  - deb_link: http://download.skype.com/linux/skype-ubuntu-precise_4.3.0.37-1_i386.deb
+  - deb_sha256: d19769135c014f7bdcb0c71410fd27698081c1aa4c6bbe53ccdd38576f17febc
+  - deb_dest: /tmp/skype-ubuntu-precise_4.3.0.37-1_i386.deb
+  tasks:
+  - name: get skype deb file
+    get_url: url={{ deb_link }} dest={{ deb_dest }} checksum=sha256:{{ deb_sha256 }}
+  - name: install skype package from a deb file
+    apt: deb={{ deb_dest }}

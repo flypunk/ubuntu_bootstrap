@@ -15,5 +15,5 @@ sudo -H python setup.py install
 ```
 cd; git clone https://github.com/flypunk/ubuntu_bootstrap.git
 cd ~/ubuntu_bootstrap
-ansible-playbook basic_system_packages.yml
+ansible-playbook basic_system_packages.yml skype.yml
 ```
