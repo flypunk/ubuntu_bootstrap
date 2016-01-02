@@ -1,0 +1,13 @@
+---
+- hosts: localhost
+  become: true
+  vars:
+  - deb_link: https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+  - deb_dest: /tmp/google-chrome-stable_current_amd64.deb
+  tasks:
+  - name: get chrome deb file
+    get_url: url={{ deb_link }} dest={{ deb_dest }}
+  - name: install chrome package from a deb file
+    apt: deb={{ deb_dest }}
+  - name: create a link to chrome
+    file: src=/opt/google/chrome/google-chrome dest=/usr/local/bin/chrome state=link
