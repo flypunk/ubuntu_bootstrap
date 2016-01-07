@@ -1,0 +1,11 @@
+---
+- hosts: localhost
+  become: true
+  vars:
+  - deb_link: http://get.code-industry.net/public/master-pdf-editor-3.5.81_amd64.deb
+  - deb_dest: /tmp/master-pdf-editor-3.5.81_amd64.deb
+  tasks:
+  - name: get pdf editor deb file
+    get_url: url={{ deb_link }} dest={{ deb_dest }}
+  - name: install pdf editor from a deb file
+    apt: deb={{ deb_dest }}
