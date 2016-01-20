@@ -1,0 +1,17 @@
+---
+- hosts: localhost
+  become: true
+  vars:
+  - pip_bootstrap_url: https://bootstrap.pypa.io/get-pip.py
+  - pip_bootstrap_dest: /tmp/get-pip.py
+  tasks:
+  - name: get pip installer
+    get_url: url={{ pip_bootstrap_url }} dest={{ pip_bootstrap_dest }}
+  - name: install pip via bootstrap
+    command: python {{ pip_bootstrap_dest }} creates=/usr/local/bin/pip
+  - name: install python packages
+    pip: name={{ item }}
+    with_items:
+    - virtualenv
+    - ipython
+    - s3cmd
